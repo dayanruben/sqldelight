@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   publish_archives:
+    if: github.repository == 'cashapp/sqldelight'
     runs-on: macos-latest
     if: github.repository == 'sqldelight/sqldelight'
     permissions:
@@ -40,6 +41,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_SECRET_PASSPHRASE }}
 
   publish_plugin:
+    if: github.repository == 'cashapp/sqldelight'
     runs-on: ubuntu-latest
     if: github.repository == 'sqldelight/sqldelight'
     permissions:
@@ -72,6 +74,7 @@ jobs:
         run: ./gradlew publishPlugin --no-parallel
 
   publish_npm_packages:
+    if: github.repository == 'cashapp/sqldelight'
     runs-on: ubuntu-latest
     if: github.repository == 'sqldelight/sqldelight'
     permissions:
@@ -121,6 +124,7 @@ jobs:
         run: npm publish
 
   publish_release:
+    if: github.repository == 'cashapp/sqldelight'
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     needs:
