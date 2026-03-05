@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   deploy-website:
+    if: github.repository == 'sqldelight/sqldelight'
     runs-on: ubuntu-latest
     permissions:
       contents: write
