@@ -2,11 +2,10 @@
 
 ## Unreleased
 
-### Changed
-* [Paging Extension] Upgrade to paging 3.4.1, and removed X64 apple targets. (#6166)
+Nothing here yet!
 
-## [2.3.1] - 2026-03-12
-[2.3.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.1
+## [2.3.2] - 2026-03-16
+[2.3.2]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.2
 
 ### Added
 - [PostgreSQL Dialect] Improved support for ALTER TABLE ALTER TYPE USING expressions (#6116 by @griffio)
@@ -22,12 +21,14 @@
 - [Runtime] Added `SuspendingTransacter.TransactionDispatcher` that provides a mechanism for controlling the `CoroutineContext` of the transaction (#5967 by @eygraber)
 - [Gradle Plugin] Full compatibility with Android Gradle Plugin 9.0's new DSL. (#6140)
 - [PostgreSQL Dialect] Support PostgreSql CREATE TABLE storage parameters (#6148 by @griffio)
+- [PostgreSQL Dialect] Fix PostgreSql unique table constraint nullable result column (#6167 by @griffio)
 
 ### Changed
 - [Compiler] Change compiler output type from java.lang.Void to kotlin.Nothing (#6099 by @griffio)
 - [Compiler] Allow for underscores in package names. Before underscores have been sanitized which resulted in unexpected behaviours (#6027 by @BierDav)
 - [Paging Extension] Switch to AndroidX Paging (#5910 by @jeffdgr8)
 - [Android Driver] Increase Android minSdk to 23. (#6141)
+- [Paging Extension] Upgrade to paging 3.4.1, and removed X64 apple targets. (#6166)
 
 ### Fixed
 - [IntelliJ Plugin] Fix IDE freeze caused by blocking file type detection on the EDT during VFS refresh events.
@@ -37,10 +38,16 @@
 - [Intellij Plugin] Fix Plugin initialization exceptions and update deprecated methods (#6040 by @griffio)
 - [Gradle Plugin] Fix compatibility with Android Gradle Plugin's built-in Kotlin (#6139)
 
+## [2.3.1] - 2025-03-12
+[2.3.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.1
+
+Failed release. Use 2.3.2!
+
+
 ## [2.3.0] - 2025-03-12
 [2.3.0]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.0
 
-Failed release. Use 2.3.1!
+Failed release. Use 2.3.2!
 
 ## [2.2.1] - 2025-11-13
 [2.2.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.2.1
