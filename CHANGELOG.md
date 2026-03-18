@@ -2,7 +2,14 @@
 
 ## Unreleased
 
-Nothing here yet!
+### Added
+- [PostgreSQL Dialect] Add query support for implicitly defined System Columns (#5834 by @griffio)
+- [PostgreSQL Dialect] Add basic Array literal support (#5997 by @griffio)
+
+### Changed
+- [PostgreSQL Dialect] Change arrayIntermediateType visibility to public (#5835 by @griffio)
+
+### Fixed
 
 ## [2.3.2] - 2026-03-16
 [2.3.2]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.2
