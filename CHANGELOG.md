@@ -3,13 +3,18 @@
 ## Unreleased
 
 ### Added
+- [Native Driver] Add `extendedConfig` parameter to `inMemoryDriver` (#5539 by @GuilhE)
 - [PostgreSQL Dialect] Add query support for implicitly defined System Columns (#5834 by @griffio)
 - [PostgreSQL Dialect] Add basic Array literal support (#5997 by @griffio)
+- [PostgreSQL Dialect] Add basic LTREE support (#5880 by @yesitskev @griffio)
+- [MySQL Dialect] Add support for INET functions (#5072 by @mcxinyu)
 
 ### Changed
 - [PostgreSQL Dialect] Change arrayIntermediateType visibility to public (#5835 by @griffio)
+- [Gradle Plugin] Implement stricter MigrationFile versioning (#5730 by @madisp)
 
 ### Fixed
+- [Compiler] Other columns in a non-grouped aggregate result set are always nullable
 
 ## [2.3.2] - 2026-03-16
 [2.3.2]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.2
