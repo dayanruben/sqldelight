@@ -3,8 +3,30 @@
 ## Unreleased
 
 ### Added
+- [Native Driver] Add `extendedConfig` parameter to `inMemoryDriver` (#5539 by @GuilhE)
+- [PostgreSQL Dialect] Add query support for implicitly defined System Columns (#5834 by @griffio)
+- [PostgreSQL Dialect] Add basic Array literal support (#5997 by @griffio)
+- [PostgreSQL Dialect] Add basic LTREE support (#5880 by @yesitskev @griffio)
+- [MySQL Dialect] Add support for INET functions (#5072 by @mcxinyu)
+
+### Changed
+- [PostgreSQL Dialect] Change arrayIntermediateType visibility to public (#5835 by @griffio)
+- [Gradle Plugin] Implement stricter MigrationFile versioning (#5730 by @madisp)
+
+### Fixed
+- [Compiler] Other columns in a non-grouped aggregate result set are always nullable
+- [PostgreSQL Dialect] Resolve nullability correctly for coalesce and ifnull
+- [PostgreSQL Dialect] Fixed IDE integration of the PostgreSQL dialect
+- [PostgreSQL Dialect] Improve IDE plugin for PostgreSQL dialect (#6209 by @griffio)
+- [Intellij Plugin] IDE plugin can perform code completions for all dialects (#6210 by @griffio)
+
+## [2.3.2] - 2026-03-16
+[2.3.2]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.2
+
+### Added
 - [PostgreSQL Dialect] Improved support for ALTER TABLE ALTER TYPE USING expressions (#6116 by @griffio)
 - [PostgreSQL Dialect] Add support for DROP COLUMN IF EXISTS (#6112 by @griffio)
+- [Gradle Plugin] Add expandSelectStar flag to switch off Select wildcard expansions (#5813 by @griffio)
 - [MySQL Dialect] Add support for Window Functions (#6086 by @griffio)
 - [Gradle Plugin] Fix build failure when starting schema version is not 1 and verifyMigrations is true (#6017 by @neilgmiller)
 - [Gradle Plugin] Make `SqlDelightWorkerTask` more configurable, and update default configuration to support developing on Windows (#5215 by @MSDarwish2000)
@@ -14,12 +36,15 @@
 - [PostgreSQL Dialect] Support Postgis Point type and related functions (#5602 by @vanniktech)
 - [Runtime] Added `SuspendingTransacter.TransactionDispatcher` that provides a mechanism for controlling the `CoroutineContext` of the transaction (#5967 by @eygraber)
 - [Gradle Plugin] Full compatibility with Android Gradle Plugin 9.0's new DSL. (#6140)
+- [PostgreSQL Dialect] Support PostgreSql CREATE TABLE storage parameters (#6148 by @griffio)
+- [PostgreSQL Dialect] Fix PostgreSql unique table constraint nullable result column (#6167 by @griffio)
 
 ### Changed
 - [Compiler] Change compiler output type from java.lang.Void to kotlin.Nothing (#6099 by @griffio)
 - [Compiler] Allow for underscores in package names. Before underscores have been sanitized which resulted in unexpected behaviours (#6027 by @BierDav)
 - [Paging Extension] Switch to AndroidX Paging (#5910 by @jeffdgr8)
 - [Android Driver] Increase Android minSdk to 23. (#6141)
+- [Paging Extension] Upgrade to paging 3.4.1, and removed X64 apple targets. (#6166)
 
 ### Fixed
 - [IntelliJ Plugin] Fix IDE freeze caused by blocking file type detection on the EDT during VFS refresh events.
@@ -28,6 +53,17 @@
 - [Gradle Plugin] Improve performance of `VerifyMigrationTask` to stop it from hanging on complex schemas (#6073 by @Lightwood13)
 - [Intellij Plugin] Fix Plugin initialization exceptions and update deprecated methods (#6040 by @griffio)
 - [Gradle Plugin] Fix compatibility with Android Gradle Plugin's built-in Kotlin (#6139)
+
+## [2.3.1] - 2025-03-12
+[2.3.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.1
+
+Failed release. Use 2.3.2!
+
+
+## [2.3.0] - 2025-03-12
+[2.3.0]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.0
+
+Failed release. Use 2.3.2!
 
 ## [2.2.1] - 2025-11-13
 [2.2.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.2.1

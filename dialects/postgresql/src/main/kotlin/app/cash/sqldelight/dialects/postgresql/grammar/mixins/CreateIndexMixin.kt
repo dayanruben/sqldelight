@@ -1,15 +1,16 @@
 package app.cash.sqldelight.dialects.postgresql.grammar.mixins
 
 import app.cash.sqldelight.dialects.postgresql.grammar.psi.PostgreSqlCreateIndexStmt
+import app.cash.sqldelight.dialects.postgresql.grammar.psi.impl.PostgreSqlCreateIndexStmtImpl
 import com.alecstrong.sql.psi.core.SqlAnnotationHolder
-import com.alecstrong.sql.psi.core.SqlSchemaContributorElementType
 import com.alecstrong.sql.psi.core.psi.SchemaContributorStub
-import com.alecstrong.sql.psi.core.psi.SqlCreateIndexStmt
-import com.alecstrong.sql.psi.core.psi.SqlTypes
+import com.alecstrong.sql.psi.core.psi.SqlIndexName
 import com.alecstrong.sql.psi.core.psi.impl.SqlCreateIndexStmtImpl
+import com.alecstrong.sql.psi.core.psi.mixins.CreateIndexElementType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.stubs.IStubElementType
+import com.intellij.psi.util.PsiTreeUtil
 
 /**
  * Storage parameter list 'autosummarize' | 'buffering' | 'deduplicate_items' | 'fastupdate' | 'fillfactor' | 'gin_pending_list_limit' | 'pages_per_range'
@@ -58,7 +59,10 @@ internal abstract class CreateIndexMixin :
         }
       }
     }
-    super.annotate(annotationHolder)
+
+    PsiTreeUtil.getChildOfType(this, SqlIndexName::class.java)?.let {
+      super.annotate(annotationHolder)
+    }
   }
 
   companion object {
@@ -155,7 +159,6 @@ internal abstract class CreateIndexMixin :
 
 internal class CreateIndexElementType(
   name: String,
-) : SqlSchemaContributorElementType<SqlCreateIndexStmt>(name, SqlCreateIndexStmt::class.java) {
-  override fun nameType() = SqlTypes.INDEX_NAME
-  override fun createPsi(stub: SchemaContributorStub) = SqlCreateIndexStmtImpl(stub, this)
+) : CreateIndexElementType("postgresql.$name") {
+  override fun createPsi(stub: SchemaContributorStub) = PostgreSqlCreateIndexStmtImpl(stub, this)
 }
