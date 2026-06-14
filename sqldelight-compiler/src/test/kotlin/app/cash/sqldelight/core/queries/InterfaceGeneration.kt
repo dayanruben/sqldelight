@@ -404,6 +404,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.String
@@ -454,6 +456,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -495,6 +499,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.String
@@ -532,6 +538,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -570,6 +578,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -608,6 +618,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Double
@@ -657,6 +669,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import java.util.List
@@ -708,6 +722,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Double
@@ -764,6 +780,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -821,6 +839,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -830,6 +850,50 @@ class InterfaceGeneration {
       |  public val id: Long,
       |  public val name: String,
       |  public val emojis: String?,
+      |)
+      |
+      """.trimMargin(),
+    )
+  }
+
+  @Test fun `single argument group_concat of nullable column is nullable with a group`() {
+    val result = FixtureCompiler.compileSql(
+      """
+      |CREATE TABLE place (
+      |  id INTEGER NOT NULL PRIMARY KEY
+      |);
+      |
+      |CREATE TABLE placeTag (
+      |  place INTEGER NOT NULL,
+      |  tag TEXT
+      |);
+      |
+      |placeWithTags:
+      |SELECT place.id, group_concat(placeTag.tag)
+      |FROM place
+      |LEFT JOIN placeTag ON placeTag.place = place.id
+      |GROUP BY place.id;
+      """.trimMargin(),
+      temporaryFolder,
+    )
+
+    assertThat(result.errors).isEmpty()
+    val generatedInterface = result.compilerOutput.get(
+      File(result.outputDirectory, "com/example/PlaceWithTags.kt"),
+    )
+    assertThat(generatedInterface).isNotNull()
+    assertThat(generatedInterface.toString()).isEqualTo(
+      """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
+      |package com.example
+      |
+      |import kotlin.Long
+      |import kotlin.String
+      |
+      |public data class PlaceWithTags(
+      |  public val id: Long,
+      |  public val group_concat: String?,
       |)
       |
       """.trimMargin(),
@@ -921,6 +985,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import app.cash.sqldelight.Query
@@ -1010,6 +1076,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import app.cash.sqldelight.Query
@@ -1117,6 +1185,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -1133,6 +1203,8 @@ class InterfaceGeneration {
     assertThat(generatedQueries).isNotNull()
     assertThat(generatedQueries.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import app.cash.sqldelight.Query
@@ -1229,6 +1301,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Long
@@ -1245,6 +1319,8 @@ class InterfaceGeneration {
     assertThat(generatedQueries).isNotNull()
     assertThat(generatedQueries.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import app.cash.sqldelight.Query
@@ -1334,6 +1410,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import app.cash.sqldelight.Query
@@ -1421,6 +1499,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+    |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+    |
     |package com.example
     |
     |import app.cash.sqldelight.Query
@@ -1638,6 +1718,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+    |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+    |
     |package com.example
     |
     |import app.cash.sqldelight.Query
@@ -1714,6 +1796,8 @@ class InterfaceGeneration {
     assertThat(generatedInterface).isNotNull()
     assertThat(generatedInterface.toString()).isEqualTo(
       """
+      |@file:Suppress("REDUNDANT_VISIBILITY_MODIFIER", "ASSIGNED_VALUE_IS_NEVER_READ")
+      |
       |package com.example
       |
       |import kotlin.Int
