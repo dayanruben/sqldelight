@@ -25,6 +25,7 @@
 - [IntelliJ Plugin] Minimum version of 2023.3 / Android Studio Jellyfish
 
 ### Fixed
+- [Gradle Plugin] Suppress `sun.misc.Unsafe` deprecation warnings from the compiler worker on JDK 24+ (#6321)
 - [Compiler] Suppress Kotlin extra warnings in generated code (#6208 by @eyupcanakman)
 - [Compiler] Other columns in a non-grouped aggregate result set are always nullable
 - [PostgreSQL Dialect] Resolve nullability correctly for coalesce and ifnull
@@ -45,6 +46,7 @@
 - [Paging3 Extension] Fix KeyedQueryPagingSource crash on empty database (#6284 by @woods-marshes)
 - [Compiler] Fix Java type adapter issue when mutator statements are used with encapsulating functions like `COALESCE` (#6292 by @griffio)
 - [Compiler] Fix where the module name was capitalized, the generated code's package name also was capitalized (#6316 by @griffio)
+- [PostgreSQL Dialect] Allow date data types to be case-insensitive (#6328 by @griffio)
 
 ## [2.3.2] - 2026-03-16
 [2.3.2]: https://github.com/sqldelight/sqldelight/releases/tag/2.3.2
