@@ -3,6 +3,22 @@
 ## Unreleased
 
 ### Added
+
+- Nothing yet!
+
+### Changed
+
+- Nothing yet!
+
+### Fixed
+
+- Nothing yet!
+
+
+## [2.4.0-rc1] - 2026-09-01
+[2.4.0-rc1]: https://github.com/sqldelight/sqldelight/releases/tag/2.4.0-rc1
+
+### Added
 - [Native Driver] Add `extendedConfig` parameter to `inMemoryDriver` (#5539 by @GuilhE)
 - [PostgreSQL Dialect] Add query support for implicitly defined System Columns (#5834 by @griffio)
 - [PostgreSQL Dialect] Add basic Array literal support (#5997 by @griffio)
