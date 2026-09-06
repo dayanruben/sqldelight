@@ -220,7 +220,7 @@ open class PostgreSqlTypeResolver(private val parentResolver: TypeResolver) : Ty
       val typeForAgg = encapsulatingTypePreferringKotlin(exprList, SMALL_INT, PostgreSqlType.INTEGER, BIG_INT, REAL, PostgreSqlType.NUMERIC, TEXT, TIMESTAMP_TIMEZONE, TIMESTAMP, DATE).asNullable()
       arrayIntermediateType(typeForAgg)
     }
-    "string_agg" -> IntermediateType(TEXT)
+    "string_agg" -> IntermediateType(TEXT).asNullable()
     "json_array_length", "jsonb_array_length" -> IntermediateType(PostgreSqlType.INTEGER)
     "jsonb_path_exists", "jsonb_path_match", "jsonb_path_exists_tz", "jsonb_path_match_tz" -> IntermediateType(BOOLEAN)
     "currval", "lastval", "nextval", "setval" -> IntermediateType(BIG_INT)
@@ -378,7 +378,7 @@ open class PostgreSqlTypeResolver(private val parentResolver: TypeResolver) : Ty
         arrayIntermediateType(typeForArray)
       }
       stringAggStmt != null -> {
-        IntermediateType(TEXT)
+        IntermediateType(TEXT).asNullable()
       }
       windowFunctionExpr != null -> {
         val windowFunctionExpr = windowFunctionExpr as WindowFunctionMixin

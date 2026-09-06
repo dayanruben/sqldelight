@@ -427,6 +427,76 @@ class ExpressionTest {
     ).inOrder()
   }
 
+  @Test fun `string_agg over a non null column is nullable without a group`() {
+    val file = FixtureCompiler.parseSql(
+      """
+      |CREATE TABLE test (
+      |  name TEXT NOT NULL
+      |);
+      |
+      |someSelect:
+      |SELECT string_agg(name, ','), string_agg(DISTINCT name, ',' ORDER BY name)
+      |FROM test;
+      """.trimMargin(),
+      tempFolder,
+      dialect = POSTGRESQL.dialect,
+    )
+
+    val query = file.namedQueries.first()
+    assertThat(query.resultColumns.map { it.javaType }).containsExactly(
+      String::class.asClassName().copy(nullable = true),
+      String::class.asClassName().copy(nullable = true),
+    ).inOrder()
+  }
+
+  @Test fun `string_agg over a non null column stays nullable with a group`() {
+    val file = FixtureCompiler.parseSql(
+      """
+      |CREATE TABLE test (
+      |  id INTEGER NOT NULL,
+      |  name TEXT NOT NULL
+      |);
+      |
+      |someSelect:
+      |SELECT id, string_agg(name, ',')
+      |FROM test
+      |GROUP BY id;
+      """.trimMargin(),
+      tempFolder,
+      dialect = POSTGRESQL.dialect,
+    )
+
+    val query = file.namedQueries.first()
+    assertThat(query.resultColumns.map { it.javaType }).containsExactly(
+      INT,
+      String::class.asClassName().copy(nullable = true),
+    ).inOrder()
+  }
+
+  @Test fun `string_agg over a nullable column stays nullable with a group`() {
+    val file = FixtureCompiler.parseSql(
+      """
+      |CREATE TABLE test (
+      |  id INTEGER,
+      |  name TEXT
+      |);
+      |
+      |someSelect:
+      |SELECT id, string_agg(name, ',')
+      |FROM test
+      |GROUP BY id;
+      """.trimMargin(),
+      tempFolder,
+      dialect = POSTGRESQL.dialect,
+    )
+
+    val query = file.namedQueries.first()
+    assertThat(query.resultColumns.map { it.javaType }).containsExactly(
+      INT.copy(nullable = true),
+      String::class.asClassName().copy(nullable = true),
+    ).inOrder()
+  }
+
   @Test fun `instr function returns nullable int if any of the args are null`() {
     val file = FixtureCompiler.parseSql(
       """

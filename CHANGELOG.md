@@ -12,7 +12,7 @@
 
 ### Fixed
 
-- Nothing yet!
+- [PostgreSQL Dialect] Fix `string_agg` function to be nullable (#6340 by @griffio)
 
 
 ## [2.4.0-rc1] - 2026-09-01
