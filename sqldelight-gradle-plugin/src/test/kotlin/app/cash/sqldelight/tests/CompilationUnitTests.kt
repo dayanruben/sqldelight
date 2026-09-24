@@ -131,7 +131,6 @@ class CompilationUnitTests {
         |  iosX64()
         |  iosArm64()
         |  macosArm64()
-        |  macosX64()
         |  js().nodejs()
         |  jvm()
         |}

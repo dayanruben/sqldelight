@@ -39,7 +39,6 @@ kotlin {
   // tier 2
   linuxArm64()
   watchosSimulatorArm64()
-  watchosArm32()
   watchosArm64()
   tvosSimulatorArm64()
   tvosArm64()
@@ -88,7 +87,7 @@ kotlin {
     }
   }
 
-  configure([targets.iosArm64, targets.tvosArm64, targets.watchosArm32, targets.watchosArm64, targets.macosArm64, targets.iosSimulatorArm64, targets.watchosSimulatorArm64, targets.tvosSimulatorArm64]) {
+  configure([targets.iosArm64, targets.tvosArm64, targets.watchosArm64, targets.macosArm64, targets.iosSimulatorArm64, targets.watchosSimulatorArm64, targets.tvosSimulatorArm64]) {
     binaries.configureEach {
       // we only need to link sqlite for the test binaries
       if (outputKind == NativeOutputKind.TEST) {

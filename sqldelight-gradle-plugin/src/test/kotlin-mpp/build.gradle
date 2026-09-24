@@ -29,9 +29,4 @@ kotlin {
       framework()
     }
   }
-  macosX64 {
-    binaries {
-      framework()
-    }
-  }
 }
