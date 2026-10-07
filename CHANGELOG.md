@@ -8,6 +8,22 @@
 
 ### Changed
 
+- Nothing yet!
+
+### Fixed
+
+- Nothing yet!
+
+
+## [2.4.1] - 2026-10-06
+[2.4.1]: https://github.com/sqldelight/sqldelight/releases/tag/2.4.1
+
+### Added
+
+- [Documentation] Additional Android SQLite transaction documentation (#6381 by @griffio)
+
+### Changed
+
 - [Gradle Plugin] Keep parsed `.sq` files in memory for the whole code generation task, so they are not parsed again after garbage collection. This can make code generation faster in large projects (#6374 by @C2H6O)
 - [IntelliJ Plugin] Crashes are now reported to the JetBrains Marketplace instead of a custom Bugsnag instance (#6376 by @JakeWharton)
 
